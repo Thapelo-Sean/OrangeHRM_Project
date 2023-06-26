@@ -27,3 +27,8 @@ Feature: Login Functionality of OrangeHRM website
           And User enters valid username
           And User clicks the reset password button
           Then Reset password link should be sent successfully
+
+          Scenario: Dashboard Navigation bar functionality
+            Given User navigated to the dashboard page
+            When User clicks any of the navigation links
+            Then User should be directed to the correct page
