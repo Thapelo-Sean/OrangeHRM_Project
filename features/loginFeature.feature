@@ -31,4 +31,4 @@ Feature: Login Functionality of OrangeHRM website
           Scenario: Dashboard Navigation bar functionality
             Given User navigated to the dashboard page
             When User clicks any of the navigation links
-            Then User should be directed to the correct page
+            Then User should be redirected to the correct page
