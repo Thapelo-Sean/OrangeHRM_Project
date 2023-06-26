@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
         private String baseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
         private String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
         private String forgotPasswordUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
+        private String sendPasswordResetUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset";
 
         @Before
         public void initBrowser() {
@@ -34,25 +35,25 @@ import java.util.concurrent.TimeUnit;
             }
         }
 
-        @Given("I navigated to the login page")
+        @Given("User navigated to the login page")
         public void iNavigatedToTheLoginPage() {
             driver.get(baseUrl);
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         }
 
-        @When("I enter valid username and password")
+        @When("User enters valid username and password")
         public void iEnterValidUsernameAndPassword() {
             loginPage.setUsername("Admin");
             loginPage.setPassword("admin123");
         }
 
-        @And("I click the login button")
+        @And("User clicks the login button")
         public void iClickTheLoginButton() {
             loginPage.clickLoginButton();
         }
 
-        @Then("I should be logged in successfully")
+        @Then("User should be logged in successfully")
         public void iShouldBeLoggedInSuccessfully() {
             if (driver.getCurrentUrl().equalsIgnoreCase(dashboardUrl)) {
                 Assert.assertTrue(true);
@@ -61,38 +62,38 @@ import java.util.concurrent.TimeUnit;
             }
         }
 
-        @When("I enter invalid username and password")
+        @When("User enters invalid username and password")
         public void iHaveEnteredInvalidUsernameAndPassword() {
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             loginPage.setUsername("Invalid Username");
             loginPage.setPassword("Invalid Password");
         }
 
-        @Then("I should get an error message")
+        @Then("User should get an error message")
         public void iShouldGetAnErrorMessage() {
 
             Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")).isDisplayed(),true);
         }
 
-        @When("I click the forgot password link")
+        @When("User clicks the forgot password link")
         public void iClickTheForgotPasswordLink()
         {
             loginPage.clickForgotPassword();
         }
 
-        @Then("I should be navigated to the forgot Password page")
+        @Then("User should be navigated to the forgot Password page")
         public void iShouldBeNavigatedToTheForgotPasswordPage()
         {
             Assert.assertEquals(driver.getCurrentUrl(),forgotPasswordUrl);
         }
 
-        @And("I enter valid username")
+        @And("User enters valid username")
         public void iEnterValidUsername()
         {
             loginPage.setUsername("Admin");
         }
 
-        @And("Click the reset password button")
+        @And("User clicks the reset password button")
         public void clickTheResetPasswordButton()
         {
             loginPage.clickResetPassword();
@@ -101,8 +102,7 @@ import java.util.concurrent.TimeUnit;
         @Then("Reset password link should be sent successfully")
         public void resetPasswordLinkShouldBeSentSuccessfully()
         {
-
+            Assert.assertEquals(driver.getCurrentUrl(),sendPasswordResetUrl);
+            Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div/h6")).isDisplayed());
         }
-
-
     }
