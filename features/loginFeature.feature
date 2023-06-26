@@ -9,3 +9,14 @@ Feature: Login Functionality of OrangeHRM website
     When I enter valid username and password
     And I click the login button
     Then I should be logged in successfully
+
+    Scenario: Unsuccessful login with invalid credentials
+      Given I navigated to the login page
+      When I enter invalid username and password
+      And I click the login button
+      Then I should get an error message
+
+      Scenario: Navigating to the forgot password page
+        Given I navigated to the login page
+        When I click the forgot password link
+        Then I should be navigated to the forgot Password page
