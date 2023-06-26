@@ -85,4 +85,24 @@ import java.util.concurrent.TimeUnit;
         {
             Assert.assertEquals(driver.getCurrentUrl(),forgotPasswordUrl);
         }
+
+        @And("I enter valid username")
+        public void iEnterValidUsername()
+        {
+            loginPage.setUsername("Admin");
+        }
+
+        @And("Click the reset password button")
+        public void clickTheResetPasswordButton()
+        {
+            loginPage.clickResetPassword();
+        }
+
+        @Then("Reset password link should be sent successfully")
+        public void resetPasswordLinkShouldBeSentSuccessfully()
+        {
+
+        }
+
+
     }

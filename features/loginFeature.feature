@@ -20,3 +20,10 @@ Feature: Login Functionality of OrangeHRM website
         Given I navigated to the login page
         When I click the forgot password link
         Then I should be navigated to the forgot Password page
+
+        Scenario: Password reset functionality
+          Given I navigated to the login page
+          When I click the forgot password link
+          And I enter valid username
+          And Click the reset password button
+          Then Reset password link should be sent successfully
