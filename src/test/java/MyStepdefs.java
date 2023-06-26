@@ -9,7 +9,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +18,7 @@ import java.util.concurrent.TimeUnit;
         private LoginPage loginPage;
         private String baseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
         private String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
+        private String forgotPasswordUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
 
         @Before
         public void initBrowser() {
@@ -75,10 +75,14 @@ import java.util.concurrent.TimeUnit;
         }
 
         @When("I click the forgot password link")
-        public void iClickTheForgotPasswordLink() {
+        public void iClickTheForgotPasswordLink()
+        {
+            loginPage.clickForgotPassword();
         }
 
         @Then("I should be navigated to the forgot Password page")
-        public void iShouldBeNavigatedToTheForgotPasswordPage() {
+        public void iShouldBeNavigatedToTheForgotPasswordPage()
+        {
+            Assert.assertEquals(driver.getCurrentUrl(),forgotPasswordUrl);
         }
     }
