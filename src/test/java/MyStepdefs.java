@@ -14,14 +14,16 @@ import java.util.concurrent.TimeUnit;
 public class MyStepdefs {
 
     private WebDriver driver;
+    private LoginPage loginPage;
     private String baseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
     private String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
-    public LoginPage loginPage = new LoginPage(driver);
+
     @Before
     public void initBrowser()
     {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        loginPage = new LoginPage(driver);
     }
 
     @After
@@ -39,7 +41,6 @@ public class MyStepdefs {
         driver.get(baseUrl);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        driver.manage().deleteAllCookies();
     }
 
     @When("I enter valid username and password")

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="09272922-351c-4ee6-8d78-00ad9f54a677" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MyStepdefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MyStepdefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/OrangeHRM/runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/OrangeHRM/runner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +52,28 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="OrangeHRM" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="runner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OrangeHRM_Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="OrangeHRM.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="OrangeHRM" />
+      <option name="MAIN_CLASS_NAME" value="OrangeHRM.runner" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.runner" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
