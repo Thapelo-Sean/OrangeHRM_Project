@@ -17,6 +17,7 @@ public class LoginPage {
     private By usernameInputLocator = By.name("username");
     private By passwordInputLocator = By.name("password");
     private By loginButtonLocator = By.xpath("/html/body/div/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button");
+    private By forgotPasswordLocator = By.linkText("Forgot Password");
 
     //Methods
     public void setUsername(String stringUsername)
@@ -37,5 +38,11 @@ public class LoginPage {
     {
         WebElement loginButton = driver.findElement(loginButtonLocator);
         loginButton.click();
+    }
+
+    public void clickForgotPassword()
+    {
+        WebElement forgotPassword = driver.findElement(forgotPasswordLocator);
+        forgotPassword.click();
     }
 }
