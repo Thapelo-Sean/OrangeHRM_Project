@@ -88,7 +88,7 @@ import java.util.concurrent.TimeUnit;
         }
 
         @And("User enters valid username")
-        public void iEnterValidUsername()
+        public void igEnterValidUsername()
         {
             loginPage.setUsername("Admin");
         }
