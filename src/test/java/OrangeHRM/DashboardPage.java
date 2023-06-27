@@ -4,20 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class DashboardPage {
+public class DashboardPage
+{
 
     private WebDriver driver;
+    //Constructor
     public DashboardPage(WebDriver driver)
     {
         this.driver = driver;
     }
 
     //Locate elements
-
     private By adminLinkLocator = By.partialLinkText("Admin");
-    private By pimLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a");
-    private By leaveLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[3]/a/span");
-    private By timeLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[4]/a");
+    private By pimLinkLocator = By.partialLinkText("PIM");
+    private By leaveLinkLocator = By.partialLinkText("Leave");
+    private By timeLinkLocator = By.partialLinkText("Time");
     private By recruitmentLinkLocator = By.partialLinkText("Recruitment");
     private By myInfoLinkLocator = By.partialLinkText("My Info");
     private By performanceLinkLocator = By.partialLinkText("Performance");
