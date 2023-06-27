@@ -39,7 +39,8 @@ import java.util.concurrent.TimeUnit;
         private final String buzzUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz";
 
         @Before
-        public void initBrowser() {
+        public void initBrowser()
+        {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
             loginPage = new LoginPage(driver);
@@ -47,48 +48,58 @@ import java.util.concurrent.TimeUnit;
         }
 
         @After
-        public void tearDown() {
-            if (driver != null) {
+        public void tearDown()
+        {
+            if (driver != null)
+            {
                 driver.quit();
             }
         }
 
         @Given("User navigated to the login page")
-        public void iNavigatedToTheLoginPage() {
+        public void iNavigatedToTheLoginPage()
+        {
             driver.get(baseUrl);
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         }
 
         @When("User enters valid username and password")
-        public void iEnterValidUsernameAndPassword() {
+        public void iEnterValidUsernameAndPassword()
+        {
             loginPage.setUsername("Admin");
             loginPage.setPassword("admin123");
         }
 
         @And("User clicks the login button")
-        public void iClickTheLoginButton() {
+        public void iClickTheLoginButton()
+        {
             loginPage.clickLoginButton();
         }
 
         @Then("User should be logged in successfully")
-        public void iShouldBeLoggedInSuccessfully() {
-            if (driver.getCurrentUrl().equalsIgnoreCase(dashboardUrl)) {
+        public void iShouldBeLoggedInSuccessfully()
+        {
+            if (driver.getCurrentUrl().equalsIgnoreCase(dashboardUrl))
+            {
                 Assert.assertTrue(true);
-            } else {
+            } else
+            {
                 Assert.fail();
             }
         }
 
         @When("User enters invalid username and password")
-        public void iHaveEnteredInvalidUsernameAndPassword() {
+        public void iHaveEnteredInvalidUsernameAndPassword()
+        {
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             loginPage.setUsername("Invalid Username");
             loginPage.setPassword("Invalid Password");
         }
 
         @Then("User should get an error message")
-        public void iShouldGetAnErrorMessage() {
+        public void iShouldGetAnErrorMessage()
+        {
 
             Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")).isDisplayed(),true);
         }
@@ -126,12 +137,14 @@ import java.util.concurrent.TimeUnit;
         }
 
         @Given("User navigated to the dashboard page")
-        public void userNavigatedToTheDashboardPage() {
+        public void userNavigatedToTheDashboardPage()
+        {
             driver.get(dashboardUrl);
         }
 
         @When("User clicks any of the navigation links")
-        public void userClicksAnyOfTheNavigationLinks() {
+        public void userClicksAnyOfTheNavigationLinks()
+        {
             iNavigatedToTheLoginPage();
             iEnterValidUsernameAndPassword();
             iClickTheLoginButton();
@@ -140,21 +153,22 @@ import java.util.concurrent.TimeUnit;
         }
 
         @Then("User should not see a {int} error or broken links")
-        public void userShouldNotSeeAErrorOrBrokenLinks(int arg0) throws IOException {
+        public void userShouldNotSeeAErrorOrBrokenLinks(int arg0) throws IOException
+        {
             List<WebElement> links = driver.findElements(By.tagName("a"));
             int linksSize = links.size();
             System.out.println("Number of links present are: " + linksSize);
 
             for(int i = 0; i < linksSize; i++)
             {
-
                 WebElement element =links.get(i);
                 String url =element.getAttribute("href");
                 verifyLinks(url);
             }
         }
 
-        private void verifyLinks(String url) throws IOException {
+        private void verifyLinks(String url) throws IOException
+        {
             URL verifyUrl = new URL(url);
             HttpURLConnection httpURLConnection = (HttpURLConnection)verifyUrl.openConnection();
             httpURLConnection.setConnectTimeout(4000);
