@@ -1,3 +1,4 @@
+import OrangeHRM.DashboardPage;
 import OrangeHRM.LoginPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -16,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 
         private WebDriver driver;
         private LoginPage loginPage;
+        private DashboardPage dashboardPage;
         private String baseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
         private String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
         private String forgotPasswordUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
@@ -26,6 +28,7 @@ import java.util.concurrent.TimeUnit;
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
             loginPage = new LoginPage(driver);
+            dashboardPage = new DashboardPage(driver);
         }
 
         @After
@@ -104,5 +107,25 @@ import java.util.concurrent.TimeUnit;
         {
             Assert.assertEquals(driver.getCurrentUrl(),sendPasswordResetUrl);
             Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div/h6")).isDisplayed());
+        }
+
+        @Given("User navigated to the dashboard page")
+        public void userNavigatedToTheDashboardPage() {
+            driver.get(dashboardUrl);
+        }
+
+        @When("User clicks any of the navigation links")
+        public void userClicksAnyOfTheNavigationLinks() {
+            dashboardPage.clickAdminLink();
+            //dashboardPage
+
+        }
+
+        @Then("User should not see a {int} error or broken links")
+        public void userShouldNotSeeAErrorOrBrokenLinks(int arg0) {
+        }
+
+        @Then("User should be redirected to the correct page")
+        public void userShouldBeRedirectedToTheCorrectPage() {
         }
     }
