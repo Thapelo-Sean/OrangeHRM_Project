@@ -37,3 +37,4 @@ Feature: Login Functionality of OrangeHRM website
             Given User navigated to the dashboard page
             When User clicks any of the navigation links
             Then User should be redirected to the correct page
+
