@@ -304,7 +304,6 @@ import java.util.concurrent.TimeUnit;
                 Assert.assertEquals(timeUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickRecruitmentLink();
-                System.out.println(driver.getCurrentUrl());
                 Assert.assertEquals(recruitmentUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickMyInfoLink();
