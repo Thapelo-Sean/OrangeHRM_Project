@@ -19,11 +19,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-    public class MyStepdefs {
-
-        private WebDriver driver;
-        private LoginPage loginPage;
-        private DashboardPage dashboardPage;
+    public class MyStepdefs
+    {
         private final String baseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
         private final String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
         private final String sendPasswordResetUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset";
@@ -37,6 +34,9 @@ import java.util.concurrent.TimeUnit;
         private final String directoryUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory";
         private final String maintenanceUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee";
         private final String buzzUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz";
+        private WebDriver driver;
+        private LoginPage loginPage;
+        private DashboardPage dashboardPage;
 
         @Before
         public void initBrowser()
@@ -100,7 +100,6 @@ import java.util.concurrent.TimeUnit;
         @Then("User should get an error message")
         public void iShouldGetAnErrorMessage()
         {
-
             Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")).isDisplayed(),true);
         }
 
