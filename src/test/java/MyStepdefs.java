@@ -24,20 +24,19 @@ import java.util.concurrent.TimeUnit;
         private WebDriver driver;
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
-        private String baseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
-        private String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
-        private String forgotPasswordUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
-        private String sendPasswordResetUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset";
-        private String adminUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers";
-        private String pimUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList";
-        private String leaveUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList";
-        private String timeUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet";
-        private String recruitmentUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates";
-        private String myInfoUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7";
-        private String performanceUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview";
-        private String directoryUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory";
-        private String maintenanceUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee";
-        private String buzzUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz";
+        private final String baseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
+        private final String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
+        private final String sendPasswordResetUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset";
+        private final String adminUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers";
+        private final String pimUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList";
+        private final String leaveUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList";
+        private final String timeUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet";
+        private final String recruitmentUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates";
+        private final String myInfoUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7";
+        private final String performanceUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview";
+        private final String directoryUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory";
+        private final String maintenanceUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee";
+        private final String buzzUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz";
 
         @Before
         public void initBrowser() {
@@ -103,7 +102,8 @@ import java.util.concurrent.TimeUnit;
         @Then("User should be navigated to the forgot Password page")
         public void iShouldBeNavigatedToTheForgotPasswordPage()
         {
-            Assert.assertEquals(driver.getCurrentUrl(),forgotPasswordUrl);
+            String forgotPasswordUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
+            Assert.assertEquals(driver.getCurrentUrl(), forgotPasswordUrl);
         }
 
         @And("User enters valid username")
@@ -132,6 +132,9 @@ import java.util.concurrent.TimeUnit;
 
         @When("User clicks any of the navigation links")
         public void userClicksAnyOfTheNavigationLinks() {
+            iNavigatedToTheLoginPage();
+            iEnterValidUsernameAndPassword();
+            iClickTheLoginButton();
             dashboardPage.clickAdminLink();
             dashboardPage.clickDashboardLink();
         }
@@ -160,6 +163,7 @@ import java.util.concurrent.TimeUnit;
             if(httpURLConnection.getResponseCode() < 400)
             {
                 Assert.assertTrue(true);
+                System.out.println("No broken links available");
             }
             else
             {
@@ -183,6 +187,7 @@ import java.util.concurrent.TimeUnit;
             Assert.assertEquals(timeUrl, driver.getCurrentUrl());
 
             dashboardPage.clickRecruitmentLink();
+            System.out.println(driver.getCurrentUrl());
             Assert.assertEquals(recruitmentUrl, driver.getCurrentUrl());
 
             dashboardPage.clickMyInfoLink();

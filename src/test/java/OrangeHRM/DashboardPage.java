@@ -14,17 +14,17 @@ public class DashboardPage {
 
     //Locate elements
 
-    private By adminLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[1]/a/span");
+    private By adminLinkLocator = By.partialLinkText("Admin");
     private By pimLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a");
     private By leaveLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[3]/a/span");
-    private By timeLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[3]/a");
-    private By recruitmentLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[4]/a");
-    private By myInfoLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[4]/a");
-    private By performanceLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[6]/a");
-    private By directoryLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[8]/a");
-    private By maintenanceLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[9]/a");
-    private By buzzLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[10]/a");
-    private By dashboardLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[7]/a");
+    private By timeLinkLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[4]/a");
+    private By recruitmentLinkLocator = By.partialLinkText("Recruitment");
+    private By myInfoLinkLocator = By.partialLinkText("My Info");
+    private By performanceLinkLocator = By.partialLinkText("Performance");
+    private By directoryLinkLocator = By.partialLinkText("Directory");
+    private By maintenanceLinkLocator = By.partialLinkText("Maintenance");
+    private By buzzLinkLocator = By.partialLinkText("Buzz");
+    private By dashboardLinkLocator = By.partialLinkText("Dashboard");
 
     //Methods
 
