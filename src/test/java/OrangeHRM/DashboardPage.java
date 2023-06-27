@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 
 public class DashboardPage
 {
-
     private WebDriver driver;
     //Constructor
     public DashboardPage(WebDriver driver)
@@ -28,7 +27,6 @@ public class DashboardPage
     private By dashboardLinkLocator = By.partialLinkText("Dashboard");
 
     //Methods
-
     public void clickAdminLink()
     {
         WebElement adminLink = driver.findElement(adminLinkLocator);
