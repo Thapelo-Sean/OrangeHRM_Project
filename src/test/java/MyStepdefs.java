@@ -176,7 +176,32 @@ import java.util.concurrent.TimeUnit;
             dashboardPage.clickPimLink();
             Assert.assertEquals(pimUrl, driver.getCurrentUrl());
 
-            dashboardPage.
+            dashboardPage.clickLeaveLink();
+            Assert.assertEquals(leaveUrl, driver.getCurrentUrl());
 
+            dashboardPage.clickTimelink();
+            Assert.assertEquals(timeUrl, driver.getCurrentUrl());
+
+            dashboardPage.clickRecruitmentLink();
+            Assert.assertEquals(recruitmentUrl, driver.getCurrentUrl());
+
+            dashboardPage.clickMyInfoLink();
+            Assert.assertEquals(myInfoUrl, driver.getCurrentUrl());
+
+            dashboardPage.clickPerformanceLink();
+            Assert.assertEquals(performanceUrl, driver.getCurrentUrl());
+
+            dashboardPage.clickDashboardLink();
+            Assert.assertEquals(dashboardUrl, driver.getCurrentUrl());
+
+            dashboardPage.clickDirectoryLink();
+            Assert.assertEquals(directoryUrl, driver.getCurrentUrl());
+
+            dashboardPage.clickMaintenanceLink();
+            Assert.assertEquals(maintenanceUrl, driver.getCurrentUrl());
+            driver.navigate().to(dashboardUrl);
+
+            dashboardPage.clickBuzzLink();
+            Assert.assertEquals(buzzUrl, driver.getCurrentUrl());
         }
     }
