@@ -7,10 +7,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.hc.client5.http.HttpResponseException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
     public class MyStepdefs {
@@ -22,6 +28,16 @@ import java.util.concurrent.TimeUnit;
         private String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
         private String forgotPasswordUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
         private String sendPasswordResetUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset";
+        private String adminUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers";
+        private String pimUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList";
+        private String leaveUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList";
+        private String timeUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet";
+        private String recruitmentUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates";
+        private String myInfoUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7";
+        private String performanceUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview";
+        private String directoryUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory";
+        private String maintenanceUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee";
+        private String buzzUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz";
 
         @Before
         public void initBrowser() {
@@ -117,15 +133,50 @@ import java.util.concurrent.TimeUnit;
         @When("User clicks any of the navigation links")
         public void userClicksAnyOfTheNavigationLinks() {
             dashboardPage.clickAdminLink();
-            //dashboardPage
-
+            dashboardPage.clickDashboardLink();
         }
 
         @Then("User should not see a {int} error or broken links")
-        public void userShouldNotSeeAErrorOrBrokenLinks(int arg0) {
+        public void userShouldNotSeeAErrorOrBrokenLinks(int arg0) throws IOException {
+            List<WebElement> links = driver.findElements(By.tagName("a"));
+            int linksSize = links.size();
+            System.out.println("Number of links present are: " + linksSize);
+
+            for(int i = 0; i < linksSize; i++)
+            {
+
+                WebElement element =links.get(i);
+                String url =element.getAttribute("href");
+                verifyLinks(url);
+            }
+        }
+
+        private void verifyLinks(String url) throws IOException {
+            URL verifyUrl = new URL(url);
+            HttpURLConnection httpURLConnection = (HttpURLConnection)verifyUrl.openConnection();
+            httpURLConnection.setConnectTimeout(4000);
+            httpURLConnection.connect();
+
+            if(httpURLConnection.getResponseCode() < 400)
+            {
+                Assert.assertTrue(true);
+            }
+            else
+            {
+                throw new HttpResponseException(httpURLConnection.getResponseCode(), "Broken link");
+            }
         }
 
         @Then("User should be redirected to the correct page")
-        public void userShouldBeRedirectedToTheCorrectPage() {
+        public void userShouldBeRedirectedToTheCorrectPage()
+        {
+            dashboardPage.clickAdminLink();
+            Assert.assertEquals(adminUrl,driver.getCurrentUrl());
+
+            dashboardPage.clickPimLink();
+            Assert.assertEquals(pimUrl, driver.getCurrentUrl());
+
+            dashboardPage.
+
         }
     }
