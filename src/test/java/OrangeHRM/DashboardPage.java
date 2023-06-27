@@ -23,6 +23,7 @@ public class DashboardPage {
     private By directoryLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[8]/a");
     private By maintenanceLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[9]/a");
     private By buzzLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[10]/a");
+    private By dashboardLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/aside/nav/div[2]/ul/li[7]/a");
 
     //Methods
 
@@ -78,5 +79,11 @@ public class DashboardPage {
     {
         WebElement buzzLink = driver.findElement(buzzLocator);
         buzzLink.click();
+    }
+
+    public void clickDashboardLink()
+    {
+        WebElement dashboardLink = driver.findElement(dashboardLocator);
+        dashboardLink.click();
     }
 }
