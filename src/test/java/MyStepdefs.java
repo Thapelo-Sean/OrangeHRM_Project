@@ -1,5 +1,6 @@
 import OrangeHRM.DashboardPage;
 import OrangeHRM.LoginPage;
+import OrangeHRM.TestUrls;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -19,7 +20,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-    public class MyStepdefs
+    public class MyStepdefs extends TestUrls
     {
         private WebDriver driver;
         private LoginPage loginPage;
