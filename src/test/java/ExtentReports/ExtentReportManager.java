@@ -4,7 +4,7 @@ import org.testng.ITestListener;
 
 public class ExtentReportManager implements ITestListener
 {
-    public 
+    public Extent
     
 
 }
