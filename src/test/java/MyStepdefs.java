@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-    public class MyStepdefs extends TestUrls
+public class MyStepdefs extends TestUrls
     {
         private WebDriver driver;
         private LoginPage loginPage;
