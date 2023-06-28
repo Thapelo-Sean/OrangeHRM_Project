@@ -21,19 +21,6 @@ import java.util.concurrent.TimeUnit;
 
     public class MyStepdefs
     {
-        private final String baseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
-        private final String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
-        private final String sendPasswordResetUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset";
-        private final String adminUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers";
-        private final String pimUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList";
-        private final String leaveUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/leave/viewLeaveList";
-        private final String timeUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/time/viewEmployeeTimesheet";
-        private final String recruitmentUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates";
-        private final String myInfoUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7";
-        private final String performanceUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/performance/searchEvaluatePerformanceReview";
-        private final String directoryUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/directory/viewDirectory";
-        private final String maintenanceUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/maintenance/purgeEmployee";
-        private final String buzzUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz";
         private WebDriver driver;
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
