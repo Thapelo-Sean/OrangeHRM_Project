@@ -46,6 +46,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
       <recent name="OrangeHRM" />
     </key>
   </component>
@@ -59,12 +60,12 @@
       <module name="OrangeHRM_Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="OrangeHRM.*" />
+          <option name="PATTERN" value="Pages.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="OrangeHRM" />
-      <option name="MAIN_CLASS_NAME" value="OrangeHRM.runner" />
+      <option name="PACKAGE_NAME" value="Runner" />
+      <option name="MAIN_CLASS_NAME" value="Runner.runner" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />

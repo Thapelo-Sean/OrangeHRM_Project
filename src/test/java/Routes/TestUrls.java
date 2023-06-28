@@ -1,4 +1,4 @@
-package OrangeHRM;
+package Routes;
 
 public class TestUrls
 {

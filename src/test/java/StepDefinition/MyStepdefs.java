@@ -1,6 +1,8 @@
-import OrangeHRM.DashboardPage;
-import OrangeHRM.LoginPage;
-import OrangeHRM.TestUrls;
+package StepDefinition;
+
+import Pages.DashboardPage;
+import Pages.LoginPage;
+import Routes.TestUrls;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
