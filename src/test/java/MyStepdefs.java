@@ -38,7 +38,6 @@ import java.util.concurrent.TimeUnit;
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
 
-
         @Before
         public void initBrowser()
         {
