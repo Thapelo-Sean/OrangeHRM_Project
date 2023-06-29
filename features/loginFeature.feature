@@ -38,3 +38,11 @@ Feature: Login Functionality of OrangeHRM website
             When User clicks any of the navigation links
             Then User should be redirected to the correct page
 
+            Scenario: Logout Functionality
+              Given User navigated to the login page
+              When User enters valid username and password
+              And User clicks the login button
+              And User clicks the user dropdown name
+              And User clicks the logout link
+              Then User should logged out successfully
+
