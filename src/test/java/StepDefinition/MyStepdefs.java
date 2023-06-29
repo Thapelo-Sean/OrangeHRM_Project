@@ -319,4 +319,39 @@ public class MyStepdefs
                 e.printStackTrace();
             }
         }
+
+        @And("User clicks the user dropdown name")
+        public void userClicksTheUserDropdownName()
+        {
+            try
+            {
+                dashboardPage.clickUserDropdownIcon();
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        @And("User clicks the logout link")
+        public void userClicksTheLogoutLink()
+        {
+            try
+            {
+                dashboardPage.clickLogoutLink();
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        @Then("User should logged out successfully")
+        public void userShouldLoggedOutSuccessfully()
+        {
+            try
+            {
+                Assert.assertEquals(urls.baseUrl, driver.getCurrentUrl());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
