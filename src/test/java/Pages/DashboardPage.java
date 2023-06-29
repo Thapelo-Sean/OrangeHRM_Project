@@ -25,7 +25,8 @@ public class DashboardPage
     private By maintenanceLinkLocator = By.partialLinkText("Maintenance");
     private By buzzLinkLocator = By.partialLinkText("Buzz");
     private By dashboardLinkLocator = By.partialLinkText("Dashboard");
-
+    private By userDropdownLocator = By.xpath("//*[@id=\"app\"]/div[1]/div[1]/header/div[1]/div[2]/ul/li/span/p");
+    private By logoutLinkLocator = By.partialLinkText("Logout");
     //Methods
     public void clickAdminLink()
     {
@@ -91,5 +92,17 @@ public class DashboardPage
     {
         WebElement dashboardLink = driver.findElement(dashboardLinkLocator);
         dashboardLink.click();
+    }
+
+    public void clickUserDropdownIcon()
+    {
+        WebElement userDropdown = driver.findElement(userDropdownLocator);
+        userDropdown.click();
+    }
+
+    public void clickLogoutLink()
+    {
+        WebElement logoutLink = driver.findElement(logoutLinkLocator);
+        logoutLink.click();
     }
 }
