@@ -10,13 +10,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.hc.client5.http.HttpResponseException;
+import org.apache.http.client.HttpResponseException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -81,7 +80,8 @@ public class MyStepdefs
             {
                 loginPage.setUsername("Admin");
                 loginPage.setPassword("admin123");
-            } catch (Exception e) {
+            } catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }
@@ -97,9 +97,8 @@ public class MyStepdefs
                 e.printStackTrace();
             }
         }
-
         @Then("User should be logged in successfully")
-        public void iShouldBeLoggedInSuccessfully()
+        public void UserShouldBeLoggedInSuccessfully()
         {
             try
             {

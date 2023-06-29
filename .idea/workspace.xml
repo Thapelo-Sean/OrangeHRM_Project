@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09272922-351c-4ee6-8d78-00ad9f54a677" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ExtentReporting/ExtentReportManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ExtentReporting/ExtentReportManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Runner/runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Runner/runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinition/MyStepdefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinition/MyStepdefs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/features/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,17 +58,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/src/test/java/OrangeHRM&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_directory_selection": "C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/src/test/java/OrangeHRM",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ExtentReporting" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Katan\OneDrive\Desktop\MyAutomation\OrangeHRM_Project\features" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -76,7 +86,7 @@
       <command value="XxzZzz-4-------d" />
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/testng.xml">
+  <component name="RunManager" selected="JUnit.runner">
     <configuration name="Feature: loginFeature" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/features/loginFeature.feature" />
@@ -111,6 +121,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/features/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="OrangeHRM_Project" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/features/testng.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="OrangeHRM_Project" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
@@ -123,9 +143,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.runner" />
+        <item itemvalue="TestNG.C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/features/testng.xml" />
         <item itemvalue="TestNG.C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/testng.xml" />
         <item itemvalue="Cucumber Java.Feature: loginFeature" />
-        <item itemvalue="JUnit.runner" />
       </list>
     </recent_temporary>
   </component>
