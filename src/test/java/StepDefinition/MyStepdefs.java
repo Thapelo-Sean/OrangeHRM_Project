@@ -1,8 +1,8 @@
 package StepDefinition;
 
+import ExtentReporting.ExtentReportManager;
 import Pages.DashboardPage;
 import Pages.LoginPage;
-import Routes.TestUrls;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -16,17 +16,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import Routes.TestUrls;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class MyStepdefs extends TestUrls
+public class MyStepdefs extends ExtentReportManager
     {
         private WebDriver driver;
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
+        TestUrls urls = new TestUrls();
 
         @Before
         public void initBrowser()
@@ -63,7 +65,7 @@ public class MyStepdefs extends TestUrls
         {
             try
             {
-                driver.get(baseUrl);
+                driver.get(urls.baseUrl);
                 driver.manage().window().maximize();
                 driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
             } catch (Exception e)
@@ -101,7 +103,7 @@ public class MyStepdefs extends TestUrls
         {
             try
             {
-                if (driver.getCurrentUrl().equalsIgnoreCase(dashboardUrl))
+                if (driver.getCurrentUrl().equalsIgnoreCase(urls.dashboardUrl))
                 {
                     Assert.assertTrue(true);
                 } else
@@ -194,7 +196,7 @@ public class MyStepdefs extends TestUrls
         {
             try
             {
-                Assert.assertEquals(driver.getCurrentUrl(),sendPasswordResetUrl);
+                Assert.assertEquals(driver.getCurrentUrl(),urls.sendPasswordResetUrl);
                 Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div/h6")).isDisplayed());
             } catch (Exception e)
             {
@@ -207,7 +209,7 @@ public class MyStepdefs extends TestUrls
         {
             try
             {
-                driver.get(dashboardUrl);
+                driver.get(urls.dashboardUrl);
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -281,38 +283,38 @@ public class MyStepdefs extends TestUrls
             try
             {
                 dashboardPage.clickAdminLink();
-                Assert.assertEquals(adminUrl,driver.getCurrentUrl());
+                Assert.assertEquals(urls.adminUrl,driver.getCurrentUrl());
 
                 dashboardPage.clickPimLink();
-                Assert.assertEquals(pimUrl, driver.getCurrentUrl());
+                Assert.assertEquals(urls.pimUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickLeaveLink();
-                Assert.assertEquals(leaveUrl, driver.getCurrentUrl());
+                Assert.assertEquals(urls.leaveUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickTimelink();
-                Assert.assertEquals(timeUrl, driver.getCurrentUrl());
+                Assert.assertEquals(urls.timeUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickRecruitmentLink();
-                Assert.assertEquals(recruitmentUrl, driver.getCurrentUrl());
+                Assert.assertEquals(urls.recruitmentUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickMyInfoLink();
-                Assert.assertEquals(myInfoUrl, driver.getCurrentUrl());
+                Assert.assertEquals(urls.myInfoUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickPerformanceLink();
-                Assert.assertEquals(performanceUrl, driver.getCurrentUrl());
+                Assert.assertEquals(urls.performanceUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickDashboardLink();
-                Assert.assertEquals(dashboardUrl, driver.getCurrentUrl());
+                Assert.assertEquals(urls.dashboardUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickDirectoryLink();
-                Assert.assertEquals(directoryUrl, driver.getCurrentUrl());
+                Assert.assertEquals(urls.directoryUrl, driver.getCurrentUrl());
 
                 dashboardPage.clickMaintenanceLink();
-                Assert.assertEquals(maintenanceUrl, driver.getCurrentUrl());
-                driver.navigate().to(dashboardUrl);
+                Assert.assertEquals(urls.maintenanceUrl, driver.getCurrentUrl());
+                driver.navigate().to(urls.dashboardUrl);
 
                 dashboardPage.clickBuzzLink();
-                Assert.assertEquals(buzzUrl, driver.getCurrentUrl());
+                Assert.assertEquals(urls.buzzUrl, driver.getCurrentUrl());
             } catch (Exception e)
             {
                 e.printStackTrace();
