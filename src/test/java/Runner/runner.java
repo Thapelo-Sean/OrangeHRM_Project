@@ -2,6 +2,7 @@ package Runner;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.junit.runner.RunWith;
 
 
@@ -9,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = "Features",
 monochrome = true,
 glue = {"StepDefinition"})
-public class runner
+public class runner extends AbstractTestNGCucumberTests
 {
 
 }
