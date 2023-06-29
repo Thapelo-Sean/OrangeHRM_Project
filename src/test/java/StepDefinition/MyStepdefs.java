@@ -3,6 +3,8 @@ package StepDefinition;
 import Pages.DashboardPage;
 import Pages.LoginPage;
 import Routes.TestUrls;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -28,6 +30,9 @@ public class MyStepdefs
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
         TestUrls urls = new TestUrls();
+        public ExtentReports extent;
+        public ExtentSparkReporter spark;
+        String reportName;
 
         @Before
         public void initBrowser()
@@ -38,6 +43,9 @@ public class MyStepdefs
                 driver = new ChromeDriver();
                 loginPage = new LoginPage(driver);
                 dashboardPage = new DashboardPage(driver);
+                extent = new ExtentReports();
+                extent.attachReporter(spark);
+                spark = new ExtentSparkReporter(".\\Reports\\" + reportName);
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -60,7 +68,7 @@ public class MyStepdefs
         }
 
         @Given("User navigated to the login page")
-        public void iNavigatedToTheLoginPage()
+        public void NavigateToLoginPage()
         {
             try
             {
@@ -74,7 +82,7 @@ public class MyStepdefs
         }
 
         @When("User enters valid username and password")
-        public void iEnterValidUsernameAndPassword()
+        public void EnterValidUsernameAndPassword()
         {
             try
             {
@@ -87,7 +95,7 @@ public class MyStepdefs
         }
 
         @And("User clicks the login button")
-        public void iClickTheLoginButton()
+        public void clickLoginButton()
         {
             try
             {
@@ -116,7 +124,7 @@ public class MyStepdefs
         }
 
         @When("User enters invalid username and password")
-        public void iHaveEnteredInvalidUsernameAndPassword()
+        public void EnterInvalidUsernameAndPassword()
         {
             try
             {
@@ -130,7 +138,7 @@ public class MyStepdefs
         }
 
         @Then("User should get an error message")
-        public void iShouldGetAnErrorMessage()
+        public void UserShouldGetAnErrorMessage()
         {
             try
             {
@@ -142,7 +150,7 @@ public class MyStepdefs
         }
 
         @When("User clicks the forgot password link")
-        public void iClickTheForgotPasswordLink()
+        public void clickForgotPasswordLink()
         {
             try
             {
@@ -154,7 +162,7 @@ public class MyStepdefs
         }
 
         @Then("User should be navigated to the forgot Password page")
-        public void iShouldBeNavigatedToTheForgotPasswordPage()
+        public void userShouldBeNavigatedToTheForgotPasswordPage()
         {
             try
             {
@@ -167,7 +175,7 @@ public class MyStepdefs
         }
 
         @And("User enters valid username")
-        public void iEnterValidUsername()
+        public void enterValidUsername()
         {
             try
             {
@@ -179,7 +187,7 @@ public class MyStepdefs
         }
 
         @And("User clicks the reset password button")
-        public void clickTheResetPasswordButton()
+        public void clickResetPasswordButton()
         {
             try
             {
@@ -204,7 +212,7 @@ public class MyStepdefs
         }
 
         @Given("User navigated to the dashboard page")
-        public void userNavigatedToTheDashboardPage()
+        public void NavigatedToTheDashboardPage()
         {
             try
             {
@@ -216,13 +224,13 @@ public class MyStepdefs
         }
 
         @When("User clicks any of the navigation links")
-        public void userClicksAnyOfTheNavigationLinks()
+        public void clicksAnyOfTheNavigationLinks()
         {
             try
             {
-                iNavigatedToTheLoginPage();
-                iEnterValidUsernameAndPassword();
-                iClickTheLoginButton();
+                //iNavigatedToTheLoginPage();
+                EnterValidUsernameAndPassword();
+                clickLoginButton();
                 dashboardPage.clickAdminLink();
                 dashboardPage.clickDashboardLink();
             } catch (Exception e)
@@ -321,7 +329,7 @@ public class MyStepdefs
         }
 
         @And("User clicks the user dropdown name")
-        public void userClicksTheUserDropdownName()
+        public void clickTheUserDropdownName()
         {
             try
             {
@@ -333,7 +341,7 @@ public class MyStepdefs
         }
 
         @And("User clicks the logout link")
-        public void userClicksTheLogoutLink()
+        public void clickTheLogoutLink()
         {
             try
             {
