@@ -19,7 +19,7 @@ public class ExtentReportManager implements ITestListener
     {
         reportName = "Test-Report.html";
         extent = new ExtentReports();
-        spark = new ExtentSparkReporter(".\\TestReports\\" + reportName);
+        spark = new ExtentSparkReporter("./Reports/" + reportName);
         extent.attachReporter(spark);
 
         spark.config().setDocumentTitle("OrangeHRM Project");

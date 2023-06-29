@@ -1,8 +1,8 @@
 package StepDefinition;
 
-import ExtentReporting.ExtentReportManager;
 import Pages.DashboardPage;
 import Pages.LoginPage;
+import Routes.TestUrls;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -16,14 +16,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import Routes.TestUrls;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class MyStepdefs extends ExtentReportManager
+public class MyStepdefs
     {
         private WebDriver driver;
         private LoginPage loginPage;
