@@ -44,6 +44,7 @@ public class MyStepdefs
                 dashboardPage = new DashboardPage(driver);
             } catch (Exception e)
             {
+                System.err.println("Failed to initialize browser: " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -64,7 +65,7 @@ public class MyStepdefs
         }
 
         @Given("User navigated to the login page")
-        public void NavigateToLoginPage()
+        public void navigateToLoginPage()
         {
             try
             {
@@ -86,6 +87,7 @@ public class MyStepdefs
                 loginPage.setPassword("admin123");
             } catch (Exception e)
             {
+                System.err.println("Unknown error occurred: " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -224,7 +226,7 @@ public class MyStepdefs
         {
             try
             {
-                NavigateToLoginPage();
+                navigateToLoginPage();
                 EnterValidUsernameAndPassword();
                 clickLoginButton();
                 dashboardPage.clickAdminLink();
@@ -281,7 +283,7 @@ public class MyStepdefs
         }
 
         @Then("User should be redirected to the correct page")
-        public void userShouldBeRedirectedToTheCorrectPage()
+        public void verifyCorrectPageRedirection()
         {
             try
             {
