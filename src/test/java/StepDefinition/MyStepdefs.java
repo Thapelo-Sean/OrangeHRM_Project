@@ -273,7 +273,7 @@ public class MyStepdefs
                 }
                 else
                 {
-                    throw new HttpResponseException(httpURLConnection.getResponseCode(), "Broken link");
+                    throw new HttpResponseException(httpURLConnection.getResponseCode(), "Broken links found");
                 }
             } catch (IOException e)
             {
