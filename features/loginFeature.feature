@@ -28,7 +28,7 @@ Feature: Login Functionality of OrangeHRM website
           And User clicks the reset password button
           Then Reset password link should be sent successfully
 
-          Scenario: Check broken links
+          Scenario: Verify broken links
             Given User navigated to the dashboard page
             When User clicks any of the navigation links
             Then User should not see a 404 error or broken links
@@ -45,4 +45,3 @@ Feature: Login Functionality of OrangeHRM website
               And User clicks the user dropdown name
               And User clicks the logout link
               Then User should logged out successfully
-

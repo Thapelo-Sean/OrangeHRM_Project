@@ -3,8 +3,6 @@ package StepDefinition;
 import Pages.DashboardPage;
 import Pages.LoginPage;
 import Routes.TestUrls;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -30,9 +28,10 @@ public class MyStepdefs
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
         TestUrls urls = new TestUrls();
-        public ExtentReports extent;
+ /*       public ExtentReports extent;
         public ExtentSparkReporter spark;
-        String reportName;
+        String reportName;*/
+
 
         @Before
         public void initBrowser()
@@ -43,9 +42,6 @@ public class MyStepdefs
                 driver = new ChromeDriver();
                 loginPage = new LoginPage(driver);
                 dashboardPage = new DashboardPage(driver);
-                extent = new ExtentReports();
-                extent.attachReporter(spark);
-                spark = new ExtentSparkReporter(".\\Reports\\" + reportName);
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -228,7 +224,7 @@ public class MyStepdefs
         {
             try
             {
-                //iNavigatedToTheLoginPage();
+                NavigateToLoginPage();
                 EnterValidUsernameAndPassword();
                 clickLoginButton();
                 dashboardPage.clickAdminLink();
