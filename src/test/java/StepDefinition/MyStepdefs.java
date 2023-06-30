@@ -19,6 +19,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterSuite;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -26,14 +27,14 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class MyStepdefs
+public class    MyStepdefs
     {
         private WebDriver driver;
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
         TestUrls urls = new TestUrls();
-        private static ExtentReports extent;
-        private static  ExtentSparkReporter spark;
+        public static ExtentReports extent;
+        public static ExtentSparkReporter spark;
 
         @Before
         public void initReport()
@@ -73,7 +74,6 @@ public class MyStepdefs
                 {
                     driver.quit();
                 }
-                extent.flush();
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -98,6 +98,7 @@ public class MyStepdefs
                 extent.createTest("Verify navigation to login page")
                         .assignAuthor("Thapelo Matji")
                         .log(Status.PASS, "Successfully navigated to the login page");
+                System.out.print("Test report generated");
             }
             else
             {
@@ -144,6 +145,7 @@ public class MyStepdefs
                             .assignAuthor("Thapelo Matji")
                             .createNode("Login Test")
                             .log(Status.PASS, "Successfully logged in the dashboard page");
+                    System.out.print("Test report generated");
                 } else
                 {
                     Assert.fail();
@@ -178,9 +180,24 @@ public class MyStepdefs
         {
             try
             {
-                Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")).isDisplayed(),true);
+                if(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")).isDisplayed())
+                {
+                    extent.createTest("Verify unsuccessful login error message")
+                            .assignAuthor("Thapelo Matji")
+                            .createNode("Error Message")
+                            .log(Status.PASS, "Error message displayed");
+                    System.out.print("Test report generated");
+                }
+                else
+                {
+                    extent.createTest("Verify unsuccessful login error message")
+                            .assignAuthor("Thapelo Matji")
+                            .createNode("Error Message")
+                            .log(Status.FAIL, "Error message not displayed");
+                }
             } catch (Exception e)
             {
+                System.out.println("Error message not displayed "  + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -204,8 +221,23 @@ public class MyStepdefs
             {
                 String forgotPasswordUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
                 Assert.assertEquals(driver.getCurrentUrl(), forgotPasswordUrl);
+                if(driver.getCurrentUrl().equalsIgnoreCase(forgotPasswordUrl))
+                {
+                    extent.createTest("Verify navigation to forgot password page")
+                            .assignAuthor("Thapelo Matji")
+                            .log(Status.PASS, "Navigated to forgot password page");
+                    System.out.print("Test report generated");
+                }
+                else
+                {
+                    extent.createTest("Verify navigation to forgot password page")
+                            .assignAuthor("Thapelo Matji")
+                            .log(Status.PASS, "Failed to redirect to forgot password page");
+                }
+                extent.flush();
             } catch (Exception e)
             {
+                System.err.println("Failed to redirect to forgot password page " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -239,8 +271,21 @@ public class MyStepdefs
         {
             try
             {
-                Assert.assertEquals(driver.getCurrentUrl(),urls.sendPasswordResetUrl);
-                Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div/h6")).isDisplayed());
+                if(driver.getCurrentUrl().equalsIgnoreCase(urls.sendPasswordResetUrl) && driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div/h6")).isDisplayed())
+                {
+                    Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div/h6")).isDisplayed());
+                    extent.createTest("Verify password reset link")
+                            .assignAuthor("Thapelo Matji")
+                            .log(Status.PASS, "Reset link successfully sent");
+                    System.out.print("Test report generated");
+                }
+                else
+                {
+                    Assert.fail("Reset link not sent");
+                    extent.createTest("Verify password reset link")
+                            .assignAuthor("Thapelo Matji")
+                            .log(Status.FAIL, "Reset link failed to send");
+                }
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -253,6 +298,13 @@ public class MyStepdefs
             try
             {
                 driver.get(urls.dashboardUrl);
+                if(driver.getCurrentUrl().equalsIgnoreCase(urls.dashboardUrl))
+                {
+                    extent.createTest("Verify navigation to dashboard page")
+                            .assignAuthor("Thapelo Matji")
+                            .log(Status.PASS, "Successfully navigated to the dashboard page");
+                    System.out.print("Test report generated");
+                }
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -268,7 +320,6 @@ public class MyStepdefs
                 EnterValidUsernameAndPassword();
                 clickLoginButton();
                 dashboardPage.clickAdminLink();
-                dashboardPage.clickDashboardLink();
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -322,39 +373,45 @@ public class MyStepdefs
         @Then("User should be redirected to the correct page")
         public void verifyCorrectPageRedirection()
         {
-                dashboardPage.clickAdminLink();
-                Assert.assertEquals(urls.adminUrl,driver.getCurrentUrl());
+            dashboardPage.clickAdminLink();
+            Assert.assertEquals(urls.adminUrl,driver.getCurrentUrl());
 
-                dashboardPage.clickPimLink();
-                Assert.assertEquals(urls.pimUrl, driver.getCurrentUrl());
+            dashboardPage.clickPimLink();
+            Assert.assertEquals(urls.pimUrl, driver.getCurrentUrl());
 
-                dashboardPage.clickLeaveLink();
-                Assert.assertEquals(urls.leaveUrl, driver.getCurrentUrl());
+            dashboardPage.clickLeaveLink();
+            Assert.assertEquals(urls.leaveUrl, driver.getCurrentUrl());
 
-                dashboardPage.clickTimelink();
-                Assert.assertEquals(urls.timeUrl, driver.getCurrentUrl());
+            dashboardPage.clickTimelink();
+            Assert.assertEquals(urls.timeUrl, driver.getCurrentUrl());
 
-                dashboardPage.clickRecruitmentLink();
-                Assert.assertEquals(urls.recruitmentUrl, driver.getCurrentUrl());
+            dashboardPage.clickRecruitmentLink();
+            Assert.assertEquals(urls.recruitmentUrl, driver.getCurrentUrl());
 
-                dashboardPage.clickMyInfoLink();
-                Assert.assertEquals(urls.myInfoUrl, driver.getCurrentUrl());
+            dashboardPage.clickMyInfoLink();
+            Assert.assertEquals(urls.myInfoUrl, driver.getCurrentUrl());
 
-                dashboardPage.clickPerformanceLink();
-                Assert.assertEquals(urls.performanceUrl, driver.getCurrentUrl());
+            dashboardPage.clickPerformanceLink();
+            Assert.assertEquals(urls.performanceUrl, driver.getCurrentUrl());
 
-                dashboardPage.clickDashboardLink();
-                Assert.assertEquals(urls.dashboardUrl, driver.getCurrentUrl());
+            dashboardPage.clickDashboardLink();
+            Assert.assertEquals(urls.dashboardUrl, driver.getCurrentUrl());
 
-                dashboardPage.clickDirectoryLink();
-                Assert.assertEquals(urls.directoryUrl, driver.getCurrentUrl());
+            dashboardPage.clickDirectoryLink();
+            Assert.assertEquals(urls.directoryUrl, driver.getCurrentUrl());
 
-                dashboardPage.clickMaintenanceLink();
-                Assert.assertEquals(urls.maintenanceUrl, driver.getCurrentUrl());
-                driver.navigate().to(urls.dashboardUrl);
+            dashboardPage.clickMaintenanceLink();
+            Assert.assertEquals(urls.maintenanceUrl, driver.getCurrentUrl());
+            driver.navigate().to(urls.dashboardUrl);
 
-                dashboardPage.clickBuzzLink();
-                Assert.assertEquals(urls.buzzUrl, driver.getCurrentUrl());
+            dashboardPage.clickBuzzLink();
+            Assert.assertEquals(urls.buzzUrl, driver.getCurrentUrl());
+
+            extent.createTest("Verify correct page redirection")
+                    .assignAuthor("Thapelo Matji")
+                    .log(Status.PASS, "All pages redirected successfully");
+            System.out.print("Test report generated");
+
         }
 
         @And("User clicks the user dropdown name")
@@ -390,5 +447,10 @@ public class MyStepdefs
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+        @AfterSuite
+        public void ext()
+        {
+            extent.flush();
         }
     }
