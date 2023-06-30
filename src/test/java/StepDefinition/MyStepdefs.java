@@ -3,6 +3,9 @@ package StepDefinition;
 import Pages.DashboardPage;
 import Pages.LoginPage;
 import Routes.TestUrls;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -16,6 +19,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -28,10 +32,21 @@ public class MyStepdefs
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
         TestUrls urls = new TestUrls();
- /*       public ExtentReports extent;
-        public ExtentSparkReporter spark;
-        String reportName;*/
+        private static ExtentReports extent;
+        private static  ExtentSparkReporter spark;
 
+        @Before
+        public void initReport()
+        {
+            extent = new ExtentReports();
+            extent.attachReporter(spark);
+            spark = new ExtentSparkReporter("./Reports/TestReport.html");
+            spark.config().setDocumentTitle("OrangeHRM Project");
+            spark.config().setReportName("Smoke Test Report");
+            extent.setSystemInfo("Operating System", System.getProperty("os.name"));
+            extent.setSystemInfo("Environment", "QA");
+            extent.setSystemInfo("User", "Thapelo Matji");
+        }
 
         @Before
         public void initBrowser()
@@ -58,6 +73,7 @@ public class MyStepdefs
                 {
                     driver.quit();
                 }
+                extent.flush();
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -75,6 +91,19 @@ public class MyStepdefs
             } catch (Exception e)
             {
                 e.printStackTrace();
+            }
+
+            if(urls.baseUrl.equals(driver.getCurrentUrl()))
+            {
+                extent.createTest("Verify navigation to login page")
+                        .assignAuthor("Thapelo Matji")
+                        .log(Status.PASS, "Successfully navigated to the login page");
+            }
+            else
+            {
+                extent.createTest("Verify navigation to login page")
+                        .assignAuthor("Thapelo Matji")
+                        .log(Status.FAIL, "Failed to navigate to the login page");
             }
         }
 
@@ -111,12 +140,21 @@ public class MyStepdefs
                 if (driver.getCurrentUrl().equalsIgnoreCase(urls.dashboardUrl))
                 {
                     Assert.assertTrue(true);
+                    extent.createTest("Verify redirection to dashboard page")
+                            .assignAuthor("Thapelo Matji")
+                            .createNode("Login Test")
+                            .log(Status.PASS, "Successfully logged in the dashboard page");
                 } else
                 {
                     Assert.fail();
+                    extent.createTest("Verify redirection to dashboard page")
+                            .assignAuthor("Thapelo Matji")
+                            .createNode("Login Test")
+                            .log(Status.FAIL, "Failed to login the dashboard page");
                 }
             } catch (Exception e)
             {
+                System.err.println("Failed to login " + e.getMessage());
                 e.printStackTrace();
             }
         }
