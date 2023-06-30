@@ -269,7 +269,6 @@ public class MyStepdefs
 
                 if(httpURLConnection.getResponseCode() < 400)
                 {
-                    Assert.assertTrue(true);
                     System.out.println("No broken links available");
                 }
                 else
@@ -285,8 +284,6 @@ public class MyStepdefs
         @Then("User should be redirected to the correct page")
         public void verifyCorrectPageRedirection()
         {
-            try
-            {
                 dashboardPage.clickAdminLink();
                 Assert.assertEquals(urls.adminUrl,driver.getCurrentUrl());
 
@@ -320,10 +317,6 @@ public class MyStepdefs
 
                 dashboardPage.clickBuzzLink();
                 Assert.assertEquals(urls.buzzUrl, driver.getCurrentUrl());
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-            }
         }
 
         @And("User clicks the user dropdown name")
