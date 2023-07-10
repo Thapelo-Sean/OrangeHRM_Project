@@ -19,7 +19,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -33,7 +32,6 @@ public class    MyStepdefs
         private DashboardPage dashboardPage;
         private TestUrls urls;
         private ExtentReports extent;
-        private ExtentSparkReporter spark;
 
         @Before
         public void init()
@@ -54,7 +52,7 @@ public class    MyStepdefs
 
             //init ExtentReport
             extent = new ExtentReports();
-            spark = new ExtentSparkReporter("./Reports/TestReport.html");
+            ExtentSparkReporter spark = new ExtentSparkReporter("./Reports/TestReport.html");
             extent.attachReporter(spark);
             spark.config().setDocumentTitle("OrangeHRM Project");
             spark.config().setReportName("Smoke Test Report");
