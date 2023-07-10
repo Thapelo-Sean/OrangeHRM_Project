@@ -19,8 +19,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterSuite;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -33,25 +31,13 @@ public class    MyStepdefs
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
         TestUrls urls = new TestUrls();
-        public static ExtentReports extent;
-        public static ExtentSparkReporter spark;
+        private ExtentReports extent;
+        private ExtentSparkReporter spark;
 
         @Before
-        public void initReport()
+        public void init()
         {
-            extent = new ExtentReports();
-            extent.attachReporter(spark);
-            spark = new ExtentSparkReporter("./Reports/TestReport.html");
-            spark.config().setDocumentTitle("OrangeHRM Project");
-            spark.config().setReportName("Smoke Test Report");
-            extent.setSystemInfo("Operating System", System.getProperty("os.name"));
-            extent.setSystemInfo("Environment", "QA");
-            extent.setSystemInfo("User", "Thapelo Matji");
-        }
-
-        @Before
-        public void initBrowser()
-        {
+            //init Browser
             try
             {
                 WebDriverManager.chromedriver().setup();
@@ -63,6 +49,16 @@ public class    MyStepdefs
                 System.err.println("Failed to initialize browser: " + e.getMessage());
                 e.printStackTrace();
             }
+
+            //init ExtentReport
+            extent = new ExtentReports();
+            spark = new ExtentSparkReporter("./Reports/TestReport.html");
+            extent.attachReporter(spark);
+            spark.config().setDocumentTitle("OrangeHRM Project");
+            spark.config().setReportName("Smoke Test Report");
+            extent.setSystemInfo("Operating System", System.getProperty("os.name"));
+            extent.setSystemInfo("Environment", "QA");
+            extent.setSystemInfo("User", "Thapelo Matji");
         }
 
         @After
@@ -79,7 +75,6 @@ public class    MyStepdefs
                 e.printStackTrace();
             }
         }
-
         @Given("User navigated to the login page")
         public void navigateToLoginPage()
         {
@@ -95,6 +90,7 @@ public class    MyStepdefs
 
             if(urls.baseUrl.equals(driver.getCurrentUrl()))
             {
+                org.testng.Assert.assertTrue(true);
                 extent.createTest("Verify navigation to login page")
                         .assignAuthor("Thapelo Matji")
                         .log(Status.PASS, "Successfully navigated to the login page");
@@ -102,6 +98,7 @@ public class    MyStepdefs
             }
             else
             {
+                org.testng.Assert.fail();
                 extent.createTest("Verify navigation to login page")
                         .assignAuthor("Thapelo Matji")
                         .log(Status.FAIL, "Failed to navigate to the login page");
@@ -143,7 +140,6 @@ public class    MyStepdefs
                     Assert.assertTrue(true);
                     extent.createTest("Verify redirection to dashboard page")
                             .assignAuthor("Thapelo Matji")
-                            .createNode("Login Test")
                             .log(Status.PASS, "Successfully logged in the dashboard page");
                     System.out.print("Test report generated");
                 } else
@@ -151,7 +147,6 @@ public class    MyStepdefs
                     Assert.fail();
                     extent.createTest("Verify redirection to dashboard page")
                             .assignAuthor("Thapelo Matji")
-                            .createNode("Login Test")
                             .log(Status.FAIL, "Failed to login the dashboard page");
                 }
             } catch (Exception e)
@@ -182,17 +177,17 @@ public class    MyStepdefs
             {
                 if(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")).isDisplayed())
                 {
+                    org.testng.Assert.assertTrue(true);
                     extent.createTest("Verify unsuccessful login error message")
                             .assignAuthor("Thapelo Matji")
-                            .createNode("Error Message")
                             .log(Status.PASS, "Error message displayed");
                     System.out.print("Test report generated");
                 }
                 else
                 {
+                    org.testng.Assert.fail();
                     extent.createTest("Verify unsuccessful login error message")
                             .assignAuthor("Thapelo Matji")
-                            .createNode("Error Message")
                             .log(Status.FAIL, "Error message not displayed");
                 }
             } catch (Exception e)
@@ -219,6 +214,7 @@ public class    MyStepdefs
         {
             try
             {
+                //Todo
                 String forgotPasswordUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
                 Assert.assertEquals(driver.getCurrentUrl(), forgotPasswordUrl);
                 if(driver.getCurrentUrl().equalsIgnoreCase(forgotPasswordUrl))
@@ -300,10 +296,18 @@ public class    MyStepdefs
                 driver.get(urls.dashboardUrl);
                 if(driver.getCurrentUrl().equalsIgnoreCase(urls.dashboardUrl))
                 {
+                    org.testng.Assert.assertTrue(true);
                     extent.createTest("Verify navigation to dashboard page")
                             .assignAuthor("Thapelo Matji")
                             .log(Status.PASS, "Successfully navigated to the dashboard page");
                     System.out.print("Test report generated");
+                }
+                else
+                {
+                    Assert.fail();
+                    extent.createTest("Verify navigation to dashboard page")
+                            .assignAuthor("Thapelo Matji")
+                            .log(Status.FAIL, "Failed to navigate to the dashbaord page");
                 }
             } catch (Exception e)
             {
@@ -447,10 +451,5 @@ public class    MyStepdefs
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        @AfterSuite
-        public void ext()
-        {
-            extent.flush();
         }
     }
