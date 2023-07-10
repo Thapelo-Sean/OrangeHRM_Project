@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Properties>
+        <property name = "Layout">%d [%t] %-5level %logger - %m%n</property>
+    </Properties>
+    <Appenders>
+        <Console name = "Console" target = "SYSTEM_OUT">
+            <PatternLayout pattern = "${Layout}"/>
+        </Console>
+        <File name = "LogFile" fileName = "app.log">
+            <PatternLayout>
+                <Pattern> %d %p %c{1.} {%t} %m%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name = "Info" level = "info" additivity = "false"> //name
+            <AppenderRef ref = "LogFile" />
+            <AppenderRef ref = "Console" />
+        </Logger>
+        <Root level = "error">
+            <AppenderRef ref = "Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

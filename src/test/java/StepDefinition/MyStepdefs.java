@@ -14,6 +14,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.http.client.HttpResponseException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,13 +27,14 @@ import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class    MyStepdefs
+public class MyStepdefs
     {
         private WebDriver driver;
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
         private TestUrls urls;
         private ExtentReports extent;
+        private final Logger logger = LogManager.getLogger("Info");
 
         @Before
         public void init()
@@ -94,7 +97,6 @@ public class    MyStepdefs
                 extent.createTest("Verify navigation to login page")
                         .assignAuthor("Thapelo Matji")
                         .log(Status.PASS, "Successfully navigated to the login page");
-                System.out.print("Test report generated");
             }
             else
             {
@@ -142,7 +144,6 @@ public class    MyStepdefs
                     extent.createTest("Verify redirection to dashboard page")
                             .assignAuthor("Thapelo Matji")
                             .log(Status.PASS, "Successfully logged in the dashboard page");
-                    System.out.print("Test report generated");
                 } else
                 {
                     Assert.fail();

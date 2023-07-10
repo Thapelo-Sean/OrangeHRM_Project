@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="09272922-351c-4ee6-8d78-00ad9f54a677" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/TestReport.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/TestReport.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/TestReport.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinition/MyStepdefs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinition/MyStepdefs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,6 +66,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "last_directory_selection": "C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/src/test/java/OrangeHRM",
+    "last_opened_file_path": "C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/src/test/resources",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -76,6 +77,9 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ExtentReporting" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Katan\OneDrive\Desktop\MyAutomation\OrangeHRM_Project\src\test\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Katan\OneDrive\Desktop\MyAutomation\OrangeHRM_Project\features" />
