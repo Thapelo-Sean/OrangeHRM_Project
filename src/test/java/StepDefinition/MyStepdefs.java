@@ -19,7 +19,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -377,7 +377,6 @@ public class    MyStepdefs
         }
 
         @Then("User should be redirected to the correct page")
-        @Test
         public void verifyCorrectPageRedirection()
         {
             dashboardPage.clickAdminLink();
@@ -418,7 +417,6 @@ public class    MyStepdefs
                     .assignAuthor("Thapelo Matji")
                     .log(Status.PASS, "All pages redirected successfully");
             System.out.print("Test report generated");
-
         }
 
         @And("User clicks the user dropdown name")
