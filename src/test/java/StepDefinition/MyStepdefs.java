@@ -3,9 +3,6 @@ package StepDefinition;
 import Pages.DashboardPage;
 import Pages.LoginPage;
 import Routes.TestUrls;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -33,7 +30,6 @@ public class MyStepdefs
         private LoginPage loginPage;
         private DashboardPage dashboardPage;
         private TestUrls urls;
-        private ExtentReports extent;
         private final Logger logger = LogManager.getLogger("Info");
 
         @Before
@@ -49,19 +45,9 @@ public class MyStepdefs
                 urls = new TestUrls();
             } catch (Exception e)
             {
-                System.err.println("Failed to initialize browser: " + e.getMessage());
+                logger.error("Failed to initialize browser: " + e.getMessage());
                 e.printStackTrace();
             }
-
-            //init ExtentReport
-            extent = new ExtentReports();
-            ExtentSparkReporter spark = new ExtentSparkReporter("./Reports/TestReport.html");
-            extent.attachReporter(spark);
-            spark.config().setDocumentTitle("OrangeHRM Project");
-            spark.config().setReportName("Smoke Test Report");
-            extent.setSystemInfo("Operating System", System.getProperty("os.name"));
-            extent.setSystemInfo("Environment", "QA");
-            extent.setSystemInfo("User", "Thapelo Matji");
         }
 
         @After
@@ -93,17 +79,12 @@ public class MyStepdefs
 
             if(urls.baseUrl.equals(driver.getCurrentUrl()))
             {
-                org.testng.Assert.assertTrue(true);
-                extent.createTest("Verify navigation to login page")
-                        .assignAuthor("Thapelo Matji")
-                        .log(Status.PASS, "Successfully navigated to the login page");
+                Assert.assertTrue(true);
             }
             else
             {
-                org.testng.Assert.fail();
-                extent.createTest("Verify navigation to login page")
-                        .assignAuthor("Thapelo Matji")
-                        .log(Status.FAIL, "Failed to navigate to the login page");
+                logger.error("Failed to navigate to login page");
+                Assert.fail();
             }
         }
 
@@ -116,7 +97,7 @@ public class MyStepdefs
                 loginPage.setPassword("admin123");
             } catch (Exception e)
             {
-                System.err.println("Unknown error occurred: " + e.getMessage());
+                logger.error("Unknown error occurred: " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -141,15 +122,10 @@ public class MyStepdefs
                 if (driver.getCurrentUrl().equalsIgnoreCase(urls.dashboardUrl))
                 {
                     Assert.assertTrue(true);
-                    extent.createTest("Verify redirection to dashboard page")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.PASS, "Successfully logged in the dashboard page");
                 } else
                 {
+                    logger.error("Failed to navigate to the dashboard page");
                     Assert.fail();
-                    extent.createTest("Verify redirection to dashboard page")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.FAIL, "Failed to login the dashboard page");
                 }
             } catch (Exception e)
             {
@@ -179,22 +155,16 @@ public class MyStepdefs
             {
                 if(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p")).isDisplayed())
                 {
-                    org.testng.Assert.assertTrue(true);
-                    extent.createTest("Verify unsuccessful login error message")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.PASS, "Error message displayed");
-                    System.out.print("Test report generated");
+                    Assert.assertTrue(true);
                 }
                 else
                 {
-                    org.testng.Assert.fail();
-                    extent.createTest("Verify unsuccessful login error message")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.FAIL, "Error message not displayed");
+                    logger.error("Error message not displayed");
+                    Assert.fail();
                 }
             } catch (Exception e)
             {
-                System.out.println("Error message not displayed "  + e.getMessage());
+                System.err.println(e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -216,23 +186,16 @@ public class MyStepdefs
         {
             try
             {
-                //Todo
-                String forgotPasswordUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode";
-                Assert.assertEquals(driver.getCurrentUrl(), forgotPasswordUrl);
-                if(driver.getCurrentUrl().equalsIgnoreCase(forgotPasswordUrl))
+                Assert.assertEquals(driver.getCurrentUrl(), urls.forgotPasswordUrl);
+                if(driver.getCurrentUrl().equalsIgnoreCase(urls.forgotPasswordUrl))
                 {
-                    extent.createTest("Verify navigation to forgot password page")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.PASS, "Navigated to forgot password page");
-                    System.out.print("Test report generated");
+                    Assert.assertTrue(true);
                 }
                 else
                 {
-                    extent.createTest("Verify navigation to forgot password page")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.PASS, "Failed to redirect to forgot password page");
+                    logger.error("Failed to navigate to the forgot password page");
+                    Assert.fail();
                 }
-                extent.flush();
             } catch (Exception e)
             {
                 System.err.println("Failed to redirect to forgot password page " + e.getMessage());
@@ -272,17 +235,11 @@ public class MyStepdefs
                 if(driver.getCurrentUrl().equalsIgnoreCase(urls.sendPasswordResetUrl) && driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div/h6")).isDisplayed())
                 {
                     Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[1]/div/h6")).isDisplayed());
-                    extent.createTest("Verify password reset link")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.PASS, "Reset link successfully sent");
-                    System.out.print("Test report generated");
                 }
                 else
                 {
-                    Assert.fail("Reset link not sent");
-                    extent.createTest("Verify password reset link")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.FAIL, "Reset link failed to send");
+                    logger.error("Reset link not sent");
+                    Assert.fail();
                 }
             } catch (Exception e)
             {
@@ -298,17 +255,11 @@ public class MyStepdefs
                 driver.get(urls.dashboardUrl);
                 if(driver.getCurrentUrl().equalsIgnoreCase(urls.dashboardUrl))
                 {
-                    extent.createTest("Verify navigation to dashboard page")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.PASS, "Successfully navigated to the dashboard page");
-                    System.out.print("Test report generated");
+                    Assert.assertTrue(true);
                 }
                 else
                 {
-                    //Assert.fail();
-                    extent.createTest("Verify navigation to dashboard page")
-                            .assignAuthor("Thapelo Matji")
-                            .log(Status.FAIL, "Failed to navigate to the dashbaord page");
+                    logger.error("Failed to navigate to the dashboard page");
                 }
             } catch (Exception e)
             {
@@ -363,10 +314,11 @@ public class MyStepdefs
 
                 if(httpURLConnection.getResponseCode() < 400)
                 {
-                    System.out.println("No broken links available");
+                    logger.info("Broken link not found");
                 }
                 else
                 {
+                    logger.error("Broken link found");
                     throw new HttpResponseException(httpURLConnection.getResponseCode(), "Broken links found");
                 }
             } catch (IOException e)
@@ -411,11 +363,6 @@ public class MyStepdefs
 
             dashboardPage.clickBuzzLink();
             Assert.assertEquals(urls.buzzUrl, driver.getCurrentUrl());
-
-            extent.createTest("Verify correct page redirection")
-                    .assignAuthor("Thapelo Matji")
-                    .log(Status.PASS, "All pages redirected successfully");
-            System.out.print("Test report generated");
         }
 
         @And("User clicks the user dropdown name")
@@ -451,11 +398,5 @@ public class MyStepdefs
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-
-        @After
-        public void extReport()
-        {
-            extent.flush();
         }
     }
