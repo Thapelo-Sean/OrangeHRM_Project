@@ -32,10 +32,10 @@ public class MyStepdefs
         private TestUrls urls;
         private final Logger logger = LogManager.getLogger("Info");
 
+        //init Browser
         @Before
         public void init()
         {
-            //init Browser
             try
             {
                 WebDriverManager.chromedriver().setup();
