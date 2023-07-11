@@ -2,7 +2,6 @@ package Routes;
 
 public class TestUrls
 {
-
     public final String baseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
     public final String dashboardUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
     public final String sendPasswordResetUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/sendPasswordReset";
