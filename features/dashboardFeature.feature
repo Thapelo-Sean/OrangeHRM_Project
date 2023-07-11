@@ -1,3 +1,5 @@
+Feature: Dashboard Functionality of OrangeHRM website
+
 Scenario: Verify broken links
 Given User navigated to the dashboard page
 When User clicks any of the navigation links

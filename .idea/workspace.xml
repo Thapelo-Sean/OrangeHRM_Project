@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09272922-351c-4ee6-8d78-00ad9f54a677" name="Changes" comment="" />
+    <list default="true" id="09272922-351c-4ee6-8d78-00ad9f54a677" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/dashboardFeature.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/dashboardFeature.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/features/logoutFeature.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/logoutFeature.feature" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,6 +96,44 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.runner">
+    <configuration name="All Features in: features" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/features" />
+      <option name="GLUE" value="StepDefinition" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="OrangeHRM_Project" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="All Features in: features" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Feature: dashboardFeature" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/features/dashboardFeature.feature" />
+      <option name="GLUE" value="StepDefinition" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="OrangeHRM_Project" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: dashboardFeature" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Feature: loginFeature" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/features/loginFeature.feature" />
@@ -125,16 +168,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/features/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="OrangeHRM_Project" />
-      <option name="SUITE_NAME" value="$PROJECT_DIR$/features/testng.xml" />
-      <option name="TEST_OBJECT" value="SUITE" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="OrangeHRM_Project" />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
@@ -148,9 +181,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.runner" />
-        <item itemvalue="TestNG.C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/testng.xml" />
-        <item itemvalue="TestNG.C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/features/testng.xml" />
+        <item itemvalue="Cucumber Java.All Features in: features" />
+        <item itemvalue="Cucumber Java.Feature: dashboardFeature" />
         <item itemvalue="Cucumber Java.Feature: loginFeature" />
+        <item itemvalue="TestNG.C:/Users/Katan/OneDrive/Desktop/MyAutomation/OrangeHRM_Project/testng.xml" />
       </list>
     </recent_temporary>
   </component>

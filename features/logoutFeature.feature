@@ -1,3 +1,5 @@
+Feature: Logout Functionality of OrangeHRM website
+
 Scenario: Logout Functionality
 Given User navigated to the login page
 When User enters valid username and password
