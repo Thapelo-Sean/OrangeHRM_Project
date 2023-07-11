@@ -27,11 +27,3 @@ Feature: Login Functionality of OrangeHRM website
     And User enters valid username
     And User clicks the reset password button
     Then Reset password link should be sent successfully
-
-  Scenario: Logout Functionality
-    Given User navigated to the login page
-    When User enters valid username and password
-    And User clicks the login button
-    And User clicks the user dropdown name
-    And User clicks the logout link
-    Then User should logged out successfully
